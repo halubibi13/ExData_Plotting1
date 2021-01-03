@@ -16,3 +16,8 @@ final_df$Time <- newtime
 new_cols <- lapply(final_df[,-c("Date", "Time")], FUN = as.numeric)
 samp <- final_df[,1:2]
 df_converted <- cbind.data.frame(samp,new_cols)
+
+# plot
+with(df_converted, hist(main="Global Active Power", xlab="Global Active Power (kilowatts)", Global_active_power, breaks=14, col='red', ylim=c(0,1200)))
+dev.copy(png, "plot1.png")
+dev.off()
