@@ -11,3 +11,8 @@ final_df$Date <- as.Date(final_df$Date, format = "%d/%m/%Y")
 # convert Time column from chr to POSIXct dtype
 newtime <- as.POSIXct(strptime(final_df$Time, format = "%H:%M:%S"))
 final_df$Time <- newtime
+
+# convert remaining columns to numeric dtype
+new_cols <- lapply(final_df[,-c("Date", "Time")], FUN = as.numeric)
+samp <- final_df[,1:2]
+df_converted <- cbind.data.frame(samp,new_cols)
