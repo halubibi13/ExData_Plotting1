@@ -4,3 +4,10 @@ df <- fread(file = "~/exdata_data_household_power_consumption/household_power_co
 df2 <- df[which(df$Date == "1/2/2007"),]
 df3 <- df[which(df$Date == "2/2/2007"),]
 final_df <- rbind(df2, df3)
+
+# convert Date column from chr to Date dtype
+final_df$Date <- as.Date(final_df$Date, format = "%d/%m/%Y")
+
+# convert Time column from chr to POSIXct dtype
+newtime <- as.POSIXct(strptime(final_df$Time, format = "%H:%M:%S"))
+final_df$Time <- newtime
