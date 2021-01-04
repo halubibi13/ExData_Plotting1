@@ -18,3 +18,5 @@ df_converted <- cbind.data.frame(samp2,new_cols)
 
 # plot
 with( df_converted, plot(DateTime, Global_active_power, type='l', ylab='Global Active Power (kilowatts)', xlab='') )
+dev.copy(png, "plot2.png")
+dev.off()
